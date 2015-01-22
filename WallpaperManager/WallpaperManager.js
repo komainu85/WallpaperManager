@@ -7,11 +7,14 @@
 define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore, $, _, entityService) {
     var WallpaperManager = Sitecore.Definitions.App.extend({
 
+        filesUploaded: [],
+
         initialized: function () {
             this.GetWallpapers();
         },
 
-        initialize: function() {
+        initialize: function () {
+            this.on("upload-fileUploaded", this.FileUploaded, this);
         },
 
         GetWallpapers: function () {
@@ -25,7 +28,24 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
                 datasource.viewModel.items(wallpapers);
             });
 
-        }
+        },
+
+        FileUploaded: function (model) {
+            this.filesUploaded.push(model.itemId);
+
+            this.upFiles.viewModel.refreshNumberFiles();
+
+            if (this.upFiles.viewModel.globalPercentage() == 100) {
+
+                if (this.upFiles.viewModel.totalFiles() == 1) {
+                    this.uploadDialog.viewModel.hide();
+                    this.SaveWallpapers();
+                }
+            }
+        },
+
+        SaveWallpapers: function () { }
+
     });
 
     return WallpaperManager;
