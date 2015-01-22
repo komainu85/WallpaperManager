@@ -11,7 +11,8 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
             this.GetWallpapers();
         },
 
-        initialize: function () { },
+        initialize: function() {
+        },
 
         GetWallpapers: function () {
             var datasource = this.DataSource;

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using MikeRobbins.WallpaperManager.Models;
+using System.Web;
 
 namespace MikeRobbins.WallpaperManager.Repository
 {
@@ -9,11 +10,12 @@ namespace MikeRobbins.WallpaperManager.Repository
     {
         public IQueryable<Wallpaper> GetAll()
         {
-            var diSource = new DirectoryInfo(@"C:\inetpub\wwwroot\MikeRobbins8\Website\sitecore\shell\Themes\Backgrounds");
+            var diSource = new DirectoryInfo(HttpContext.Current.Server.MapPath(@"\") + @"sitecore\shell\Themes\Backgrounds");
 
             var files = diSource.GetFiles();
+            var webPath = @"\sitecore\shell\Themes\Backgrounds\";
 
-            var wallpapers = files.Select(x => new Wallpaper() {Path = x.FullName, Name = x.Name.Replace(x.Extension,""), Id = x.Name});
+            var wallpapers = files.Select(x => new Wallpaper() { Path = webPath + x.Name, Name = x.Name.Replace(x.Extension, ""), Id = x.Name });
 
             return wallpapers.AsQueryable();
         }

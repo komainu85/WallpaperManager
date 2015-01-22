@@ -61,6 +61,7 @@
     <Reference Include="Sitecore.Services.Infrastructure.Sitecore">
       <HintPath>..\..\..\..\..\..\..\inetpub\wwwroot\MikeRobbins8\Website\bin\Sitecore.Services.Infrastructure.Sitecore.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -118,7 +119,9 @@
     <Content Include="WallpaperManager.js" />
     <Content Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="client\MikeRobbins\WallpaperManager\Tiles\WallpaperTile.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
