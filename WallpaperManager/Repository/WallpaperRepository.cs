@@ -15,7 +15,7 @@ namespace MikeRobbins.WallpaperManager.Repository
             var files = diSource.GetFiles();
             var webPath = @"\sitecore\shell\Themes\Backgrounds\";
 
-            var wallpapers = files.Select(x => new Wallpaper() { Path = webPath + x.Name, Name = x.Name.Replace(x.Extension, ""), Id = x.Name });
+            var wallpapers = files.Select(x => new Wallpaper() { Path = webPath + x.Name, Name = x.Name.Replace(x.Extension, ""), Id = x.Name.Replace(x.Extension, ""), itemId = x.Name.Replace(x.Extension, "") });
 
             return wallpapers.AsQueryable();
         }

@@ -36,15 +36,35 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
             this.upFiles.viewModel.refreshNumberFiles();
 
             if (this.upFiles.viewModel.globalPercentage() == 100) {
-
-                if (this.upFiles.viewModel.totalFiles() == 1) {
-                    this.uploadDialog.viewModel.hide();
-                    this.SaveWallpapers();
-                }
+                this.uploadDialog.viewModel.hide();
+                this.SaveWallpapers();
             }
         },
 
-        SaveWallpapers: function () { }
+        SaveWallpapers: function () {
+
+            var wallpaperService = new entityService({
+                url: "/sitecore/api/ssc/MikeRobbins-WallpaperManager-Controllers/Wallpaper"
+            });
+
+            for (var i = 0; i < this.filesUploaded.length; i++) {
+                var wallpaperMediaId = this.filesUploaded[i];
+
+                var wallpaper = {
+                    itemId: wallpaperMediaId
+                };
+
+                var result = wallpaperService.CreateEntity(wallpaper).then(function(newWallpaper) {
+                    var test = "";  
+                });
+            }
+
+            this.MessageBar.viewModel.show();
+        },
+
+        DeleteWallpaper: function () {
+
+        }
 
     });
 
