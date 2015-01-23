@@ -54,7 +54,7 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
                     itemId: wallpaperMediaId
                 };
 
-                var result = wallpaperService.CreateEntity(wallpaper).then(function(newWallpaper) {
+                var result = wallpaperService.create(wallpaper).execute().then(function(newWallpaper) {
                     var test = "";  
                 });
             }

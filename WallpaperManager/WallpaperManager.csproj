@@ -111,6 +111,8 @@
     <Compile Include="Controllers\WallpaperController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataAccess.cs" />
+    <Compile Include="IO.cs" />
     <Compile Include="Models\Wallpaper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\WallpaperRepository.cs" />

@@ -8,12 +8,13 @@ namespace MikeRobbins.WallpaperManager.Repository
 {
     public class WallpaperRepository : Sitecore.Services.Core.IRepository<Wallpaper>
     {
+        private string webPath = @"\sitecore\shell\Themes\Backgrounds\";
+
         public IQueryable<Wallpaper> GetAll()
         {
-            var diSource = new DirectoryInfo(HttpContext.Current.Server.MapPath(@"\") + @"sitecore\shell\Themes\Backgrounds");
+            var io = new IO();
 
-            var files = diSource.GetFiles();
-            var webPath = @"\sitecore\shell\Themes\Backgrounds\";
+            var files = io.GetFiles();
 
             var wallpapers = files.Select(x => new Wallpaper() { Path = webPath + x.Name, Name = x.Name.Replace(x.Extension, ""), Id = x.Name.Replace(x.Extension, ""), itemId = x.Name.Replace(x.Extension, "") });
 
@@ -27,12 +28,15 @@ namespace MikeRobbins.WallpaperManager.Repository
 
         public void Add(Wallpaper entity)
         {
-            throw new NotImplementedException();
+            var io = new IO();
+
+            io.CreateFile(entity);
         }
 
         public bool Exists(Wallpaper entity)
         {
-            throw new NotImplementedException();
+            var io = new IO();
+            return io.GetFiles().Any(x => x.Name.Replace(x.Extension, "") == entity.Id);
         }
 
         public void Update(Wallpaper entity)
@@ -42,7 +46,7 @@ namespace MikeRobbins.WallpaperManager.Repository
 
         public void Delete(Wallpaper entity)
         {
-            throw new NotImplementedException();
+
         }
     }
 }
