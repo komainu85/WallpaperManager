@@ -54,8 +54,8 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
                     itemId: wallpaperMediaId
                 };
 
-                var result = wallpaperService.create(wallpaper).execute().then(function(newWallpaper) {
-                    var test = "";  
+                var result = wallpaperService.create(wallpaper).execute().then(function (newWallpaper) {
+                    var test = "";
                 });
             }
 
@@ -64,6 +64,15 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
 
         DeleteWallpaper: function () {
 
+            var wallpaperService = new entityService({
+                url: "/sitecore/api/ssc/MikeRobbins-WallpaperManager-Controllers/Wallpaper"
+            });
+
+            var itemId = this.MediaResultsListControl.viewModel.selectedItemId();
+
+            var result = wallpaperService.fetchEntity(itemId).execute().then(function (wallpaper) {
+                wallpaper.destroy().then(function () { });
+            });
         }
 
     });
