@@ -28,6 +28,7 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
                 datasource.viewModel.items(wallpapers);
             });
 
+            this.MessageBar.viewModel.hide();
         },
 
         FileUploaded: function (model) {
@@ -68,10 +69,15 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
                 url: "/sitecore/api/ssc/MikeRobbins-WallpaperManager-Controllers/Wallpaper"
             });
 
+            var successMessage = this.MessageBar;
+
             var itemId = this.MediaResultsListControl.viewModel.selectedItemId();
 
             var result = wallpaperService.fetchEntity(itemId).execute().then(function (wallpaper) {
-                wallpaper.destroy().then(function () { });
+                wallpaper.destroy().then(function () {
+                    successMessage.addMessage("Notification", "Wallpaper has been delete. Please refresh to load new data");
+                    successMessage.viewModel.show();
+                });
             });
         }
 
