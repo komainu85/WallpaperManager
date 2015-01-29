@@ -18,6 +18,8 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
         },
 
         GetWallpapers: function () {
+            this.ClearMessages();
+
             var datasource = this.DataSource;
 
             var wallpaperService = new entityService({
@@ -27,8 +29,6 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
             var result = wallpaperService.fetchEntities().execute().then(function (wallpapers) {
                 datasource.viewModel.items(wallpapers);
             });
-
-            this.MessageBar.viewModel.hide();
         },
 
         FileUploaded: function (model) {
@@ -60,25 +60,30 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
                 });
             }
 
-            this.MessageBar.viewModel.show();
+            this.mbUpload.viewModel.show();
         },
 
         DeleteWallpaper: function () {
+            this.ClearMessages();
 
             var wallpaperService = new entityService({
                 url: "/sitecore/api/ssc/MikeRobbins-WallpaperManager-Controllers/Wallpaper"
             });
 
-            var successMessage = this.MessageBar;
+            var successMessage = this.mbDeleted;
 
             var itemId = this.MediaResultsListControl.viewModel.selectedItemId();
 
             var result = wallpaperService.fetchEntity(itemId).execute().then(function (wallpaper) {
                 wallpaper.destroy().then(function () {
-                    successMessage.addMessage("Notification", "Wallpaper has been delete. Please refresh to load new data");
                     successMessage.viewModel.show();
                 });
             });
+        },
+
+        ClearMessages: function() {
+            this.mbUpload.viewModel.hide();
+            this.mbDeleted.viewModel.hide();
         }
 
     });
