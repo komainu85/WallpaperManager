@@ -27,7 +27,7 @@ content-length: 38
 field: {F1A1FE9E-A60C-4DDB-A3A0-BB5B29FE732E}
 name: __Renderings
 key: __renderings
-content-length: 6137
+content-length: 6149
 
 <r>
   <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}" l="{4F72A793-BDBC-4262-9523-6AADD8FEA487}">
@@ -49,7 +49,7 @@ content-length: 6137
     <r id="{5CB208F6-1860-426B-8221-FAA85B329848}" par="Id=MediaFolderColumnPanel&amp;ApplyGridColumsToAllSizes=1&amp;GridColumns=12" ph="MediaFolderRowPanel.Content" uid="{4BB2338D-BD8A-42AC-BCFE-668430C13E76}" />
     <r id="{913AB005-2527-4C2D-9827-FB3A8DFB135C}" par="Click=javascript%3aapp.uploadDialog.viewModel.show()&amp;Id=UploadButton&amp;ButtonType=Primary&amp;Text=Upload+Wallpapers&amp;Dimension=Normal" ph="ApplicationHeader.ContextSwitch" uid="{8E7BAEEB-AF73-403F-BA7F-3E58ED535FD3}" />
     <r id="{913AB005-2527-4C2D-9827-FB3A8DFB135C}" par="Click=javascript%3aapp.GetWallpapers()%3b&amp;Id=btnRefresh&amp;Text=Refresh" ph="ApplicationHeader.ContextSwitch" uid="{C7BF48A5-B032-49A9-A194-96BF6837E66B}" />
-    <r ds="{F49C99E1-412F-4B6A-820F-A411E12FF395}" id="{910155C7-3881-4A56-90FB-D126490EDE55}" par="Id=mbDeleted" ph="ApplicationContent.Main" uid="{EB4AA62A-5B46-4EF3-9812-D4664F098952}" />
+    <r id="{910155C7-3881-4A56-90FB-D126490EDE55}" par="Id=mbDeleted&amp;Messages=%7bF49C99E1-412F-4B6A-820F-A411E12FF395%7d" ph="ApplicationContent.Main" uid="{EB4AA62A-5B46-4EF3-9812-D4664F098952}" />
     <r id="{910155C7-3881-4A56-90FB-D126490EDE55}" par="Id=mbUpload&amp;IsVisible=0&amp;Messages=%7bD5D3878A-82B5-488D-90FF-025CBDAF94AB%7d" ph="ApplicationContent.Main" uid="{29FDDC6E-315E-40E5-A16B-409949CE88F4}" />
     <r id="{ACE0AFD6-3DE0-42CF-8E62-4E68CD810A8D}" par="Id=MediaResultsListControl&amp;Items=%7bBinding+DataSource.items%7d&amp;ViewMode=TileList&amp;IsEndlessScrollEnabled=1&amp;Height=500&amp;TileHtmlFileName=%2fsitecore%2fshell%2fclient%2fMikeRobbins%2fWallpaperManager%2fTiles%2fWallpaperTile.cshtml" ph="ApplicationContent.Main" uid="{E2D4AA89-5E6B-4906-B074-287BB86274AA}" />
     <r id="{FE9723FC-56E4-4CA8-9C64-CB34F29462A5}" par="Id=ProgressIndicator&amp;Delay=0&amp;IsBusy=%7bBinding+DataSource.IsBusy%7d&amp;AutoShow=0&amp;AutoShowTimeout=0&amp;TargetControl=MediaResultsListControl" ph="ApplicationContent.Main" uid="{A4EE282F-BE30-4CE7-B736-BF448C08FF7F}" />
@@ -187,7 +187,7 @@ sitecore\admin
 ----version----
 language: en
 version: 1
-revision: 1ad4a31f-d7c3-4cef-ab7e-ac3bc53b6d92
+revision: e08ef2f5-776b-4bfd-9371-01cb52341a94
 
 ----field----
 field: {7205A57F-93B4-413A-AA9A-6B16BBC59565}
@@ -223,14 +223,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-1ad4a31f-d7c3-4cef-ab7e-ac3bc53b6d92
+e08ef2f5-776b-4bfd-9371-01cb52341a94
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 35
 
-20150129T100101:635581224615704104Z
+20150130T204555:635582475550872813Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
