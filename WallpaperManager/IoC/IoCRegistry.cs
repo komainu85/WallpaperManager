@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MikeRobbins.WallpaperManager.Interfaces;
+using Sitecore.Services.Core;
 using StructureMap.Configuration.DSL;
 
 namespace MikeRobbins.WallpaperManager.IoC
@@ -15,6 +16,8 @@ namespace MikeRobbins.WallpaperManager.IoC
             //   var container = new Container();
 
             For<IFileAccess>().Use<FileAccess>();
+            For<IDataAccess>().Use<DataAccess>();
+            For(typeof(IRepository<>)).Use(typeof(MikeRobbins.WallpaperManager.Repository.WallpaperRepository));
         }
     }
 }

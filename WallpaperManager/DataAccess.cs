@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MikeRobbins.WallpaperManager.Interfaces;
 
 namespace MikeRobbins.WallpaperManager
 {
-    public class DataAccess
+    public class DataAccess : IDataAccess
     {
         public MediaItem GetMediaItem(string id)
         {

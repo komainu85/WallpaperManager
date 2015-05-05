@@ -85,6 +85,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\inetpub\wwwroot\MikeRobbins8\Website\bin\System.Web.Http.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.2\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -118,6 +122,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataAccess.cs" />
+    <Compile Include="Interfaces\IDataAccess.cs" />
     <Compile Include="Interfaces\IFileAccess.cs" />
     <Compile Include="FileAccess.cs" />
     <Compile Include="IoC\IoCRegistry.cs" />
@@ -130,10 +135,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="client\MikeRobbins\WallpaperManager\Tiles\WallpaperTile.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="web.config" />
+    <Content Include="client\MikeRobbins\WallpaperManager\Tiles\WallpaperTile.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -141,6 +144,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

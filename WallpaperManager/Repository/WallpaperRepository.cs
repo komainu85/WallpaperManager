@@ -13,9 +13,9 @@ namespace MikeRobbins.WallpaperManager.Repository
     {
         private IFileAccess _iFileAccess;
 
-        public WallpaperRepository()
+        public WallpaperRepository(IFileAccess iFileAccess)
         {
-            _iFileAccess = new Container(new IoCRegistry()).GetInstance<IFileAccess>();
+            _iFileAccess = iFileAccess;
         }
 
         private string webPath = @"\sitecore\shell\Themes\Backgrounds\";

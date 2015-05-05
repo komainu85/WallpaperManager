@@ -13,9 +13,13 @@ namespace MikeRobbins.WallpaperManager
     {
         private readonly string _wallpaperDirectory = HttpContext.Current.Server.MapPath(@"\") + @"sitecore\shell\Themes\Backgrounds";
 
-        public FileAccess()
+        private IDataAccess _iDataAccess;
+
+        public FileAccess(IDataAccess iDataAccess)
         {
+            _iDataAccess = iDataAccess;
         }
+
 
         public FileInfo[] GetFiles()
         {
@@ -33,9 +37,7 @@ namespace MikeRobbins.WallpaperManager
 
         public void CreateFile(Wallpaper wallpaper)
         {
-            var dataAccess = new DataAccess();
-
-            var mediaItem = dataAccess.GetMediaItem(wallpaper.itemId);
+            var mediaItem = _iDataAccess.GetMediaItem(wallpaper.itemId);
 
             var mediaStream = mediaItem.GetMediaStream();
 
