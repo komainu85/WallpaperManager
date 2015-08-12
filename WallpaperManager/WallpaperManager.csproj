@@ -21,6 +21,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -137,6 +138,7 @@
   <ItemGroup>
     <Content Include="web.config" />
     <Content Include="client\MikeRobbins\WallpaperManager\Tiles\WallpaperTile.cshtml" />
+    <Content Include="App_Config\Include\xMikeRobbinsWallpaperManager.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
