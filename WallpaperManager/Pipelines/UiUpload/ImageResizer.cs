@@ -18,7 +18,7 @@ namespace MikeRobbins.WallpaperManager.Pipelines.UiUpload
 
             using (Graphics graphics = Graphics.FromImage(resizedImage))
             {
-                graphics.DrawImage(image, (int) 0, (int) 0, (int) targetWidth, (int) targetHeight);
+                graphics.DrawImage(image, 0, 0, targetWidth, targetHeight);
             }
 
             return resizedImage;
