@@ -1,7 +1,7 @@
 using System.IO;
 using MikeRobbins.WallpaperManager.Models;
 
-namespace MikeRobbins.WallpaperManager.Interfaces
+namespace MikeRobbins.WallpaperManager.Contracts
 {
     public interface IFileAccess
     {

@@ -123,8 +123,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataAccess.cs" />
-    <Compile Include="Interfaces\IDataAccess.cs" />
-    <Compile Include="Interfaces\IFileAccess.cs" />
+    <Compile Include="Contracts\IDataAccess.cs" />
+    <Compile Include="Contracts\IFileAccess.cs" />
     <Compile Include="FileAccess.cs" />
     <Compile Include="IoC\IoCRegistry.cs" />
     <Compile Include="Models\Wallpaper.cs" />

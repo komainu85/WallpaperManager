@@ -4,35 +4,30 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
-using MikeRobbins.WallpaperManager.Interfaces;
+using MikeRobbins.WallpaperManager.Contracts;
 using Sitecore.Diagnostics;
 
 namespace MikeRobbins.WallpaperManager
 {
     public class FileAccess : IFileAccess
     {
-        private readonly string _wallpaperDirectory = HttpContext.Current.Server.MapPath(@"\") + @"sitecore\shell\Themes\Backgrounds";
+        private const string _wallpaperDirectory = @"sitecore\shell\Themes\Backgrounds";
 
-        private IDataAccess _iDataAccess;
+        private readonly IDataAccess _iDataAccess;
 
         public FileAccess(IDataAccess iDataAccess)
         {
             _iDataAccess = iDataAccess;
         }
 
-
         public FileInfo[] GetFiles()
         {
-            var diSource = new DirectoryInfo(_wallpaperDirectory);
-
-            return diSource.GetFiles();
+            return GetWallpaperDirectory().GetFiles();
         }
 
         public FileInfo GetFile(string fileName)
         {
-            var diSource = new DirectoryInfo(_wallpaperDirectory);
-
-            return diSource.GetFiles().FirstOrDefault(x => x.Name == fileName);
+            return GetWallpaperDirectory().GetFiles().FirstOrDefault(x => x.Name == fileName);
         }
 
         public void CreateFile(Wallpaper wallpaper)
@@ -41,11 +36,20 @@ namespace MikeRobbins.WallpaperManager
 
             var mediaStream = mediaItem.GetMediaStream();
 
-            using (var fileStream = File.Create(_wallpaperDirectory + "\\" + mediaItem.DisplayName + "." + mediaItem.Extension))
+            try
             {
-                mediaStream.Seek(0, SeekOrigin.Begin);
-                mediaStream.CopyTo(fileStream);
+                using (var fileStream = File.Create(_wallpaperDirectory + "\\" + mediaItem.DisplayName + "." + mediaItem.Extension))
+                {
+                    mediaStream.Seek(0, SeekOrigin.Begin);
+                    mediaStream.CopyTo(fileStream);
+                }
             }
+            catch (Exception ex)
+            {
+                Sitecore.Diagnostics.Log.Error(ex.Message, this);
+                throw ex;
+            }
+
         }
 
         public void DeleteFile(Wallpaper wallpaper)
@@ -66,6 +70,12 @@ namespace MikeRobbins.WallpaperManager
             {
                 throw ex;
             }
+        }
+
+        private DirectoryInfo GetWallpaperDirectory()
+        {
+            var directory = new DirectoryInfo(HttpContext.Current.Server.MapPath(@"\") + _wallpaperDirectory);
+            return directory;
         }
     }
 }

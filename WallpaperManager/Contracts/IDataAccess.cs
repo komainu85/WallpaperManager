@@ -1,6 +1,6 @@
 ﻿using Sitecore.Data.Items;
 
-namespace MikeRobbins.WallpaperManager.Interfaces
+namespace MikeRobbins.WallpaperManager.Contracts
 {
     public interface IDataAccess
     {

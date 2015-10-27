@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MikeRobbins.WallpaperManager.Interfaces;
+using MikeRobbins.WallpaperManager.Contracts;
 using Sitecore.Services.Core;
 using StructureMap.Configuration.DSL;
 

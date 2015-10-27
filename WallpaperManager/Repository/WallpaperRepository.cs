@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using MikeRobbins.WallpaperManager.Models;
 using System.Web;
-using MikeRobbins.WallpaperManager.Interfaces;
+using MikeRobbins.WallpaperManager.Contracts;
 using MikeRobbins.WallpaperManager.IoC;
 using StructureMap;
 
@@ -11,14 +11,14 @@ namespace MikeRobbins.WallpaperManager.Repository
 {
     public class WallpaperRepository : Sitecore.Services.Core.IRepository<Wallpaper>
     {
-        private IFileAccess _iFileAccess;
+        private const string webPath = @"\sitecore\shell\Themes\Backgrounds\";
+  
+        private readonly IFileAccess _iFileAccess;
 
         public WallpaperRepository(IFileAccess iFileAccess)
         {
             _iFileAccess = iFileAccess;
         }
-
-        private string webPath = @"\sitecore\shell\Themes\Backgrounds\";
 
         public IQueryable<Wallpaper> GetAll()
         {
