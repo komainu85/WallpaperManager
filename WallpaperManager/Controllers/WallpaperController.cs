@@ -18,7 +18,7 @@ namespace MikeRobbins.WallpaperManager.Controllers
         {
             get
             {
-                return new Container(new IoCRegistry());
+                return new Container(new Registry());
             }
         }
 

@@ -142,11 +142,14 @@
     <Compile Include="Contracts\IDataAccess.cs" />
     <Compile Include="Contracts\IFileAccess.cs" />
     <Compile Include="FileAccess.cs" />
-    <Compile Include="IoC\IoCRegistry.cs" />
+    <Compile Include="Contracts\IImageResizer.cs" />
+    <Compile Include="IoC\Registry.cs" />
     <Compile Include="Models\Wallpaper.cs" />
-    <Compile Include="Pipelines\UiUpload\ImageResizer.cs" />
+    <Compile Include="ImageResizer.cs" />
     <Compile Include="Pipelines\UiUpload\ResizeWallpaper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Contracts\ISettingsProvider.cs" />
+    <Compile Include="Providers\SettingsProvider.cs" />
     <Compile Include="Repository\WallpaperRepository.cs" />
   </ItemGroup>
   <ItemGroup>

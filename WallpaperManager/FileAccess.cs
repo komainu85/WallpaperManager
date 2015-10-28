@@ -38,7 +38,7 @@ namespace MikeRobbins.WallpaperManager
 
             try
             {
-                using (var fileStream = File.Create(_wallpaperDirectory + "\\" + mediaItem.DisplayName + "." + mediaItem.Extension))
+                using (var fileStream = File.Create(GetWallpaperDirectory() + "\\" + mediaItem.DisplayName + "." + mediaItem.Extension))
                 {
                     mediaStream.Seek(0, SeekOrigin.Begin);
                     mediaStream.CopyTo(fileStream);
