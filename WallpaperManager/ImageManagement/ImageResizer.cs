@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using MikeRobbins.WallpaperManager.Contracts;
 
-namespace MikeRobbins.WallpaperManager
+namespace MikeRobbins.WallpaperManager.ImageManagement
 {
     public class ImageResizer : IImageResizer
     {

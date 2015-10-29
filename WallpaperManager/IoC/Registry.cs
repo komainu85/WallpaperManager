@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MikeRobbins.WallpaperManager.Contracts;
+using MikeRobbins.WallpaperManager.ImageManagement;
 using MikeRobbins.WallpaperManager.Providers;
 using Sitecore.Services.Core;
 using StructureMap.Configuration.DSL;
@@ -18,6 +19,7 @@ namespace MikeRobbins.WallpaperManager.IoC
             For<IDataAccess>().Use<DataAccess>();
             For<IImageResizer>().Use<ImageResizer>();
             For<ISettingsProvider>().Use<SettingsProvider>();
+            For<IImageRepository>().Use<ImageRepository>();
             For(typeof(IRepository<>)).Use(typeof(MikeRobbins.WallpaperManager.Repository.WallpaperRepository));
         }
     }

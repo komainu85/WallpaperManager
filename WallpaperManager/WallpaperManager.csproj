@@ -145,7 +145,9 @@
     <Compile Include="Contracts\IImageResizer.cs" />
     <Compile Include="IoC\Registry.cs" />
     <Compile Include="Models\Wallpaper.cs" />
-    <Compile Include="ImageResizer.cs" />
+    <Compile Include="ImageManagement\ImageResizer.cs" />
+    <Compile Include="Contracts\IImageRepository.cs" />
+    <Compile Include="ImageManagement\ImageRepository.cs" />
     <Compile Include="Pipelines\UiUpload\ResizeWallpaper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contracts\ISettingsProvider.cs" />

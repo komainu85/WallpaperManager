@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Web;
 using MikeRobbins.WallpaperManager.Contracts;
+using MikeRobbins.WallpaperManager.ImageManagement;
 using Sitecore.Data.Items;
 using Sitecore.Pipelines.Upload;
 using Sitecore.Resources.Media;
@@ -16,31 +17,31 @@ namespace MikeRobbins.WallpaperManager.Pipelines.UiUpload
         private const string WallpaperManagerMaxHeight = "WallpaperManager.MaxHeight";
         private const string WallpaperManagerMaxWidth = "WallpaperManager.MaxWidth";
 
-        private readonly IImageResizer _imageResizer;
         private readonly ISettingsProvider _settingsProvider;
+        private readonly IImageRepository _imageRepository;
 
         private readonly Container _container = new StructureMap.Container(new IoC.Registry());
 
         public ResizeWallpaper()
         {
-            _imageResizer = _container.GetInstance<IImageResizer>();
             _settingsProvider = _container.GetInstance<ISettingsProvider>();
+            _imageRepository = _container.GetInstance<IImageRepository>();
         }
 
         public void Process(UploadArgs args)
         {
-            Sitecore.Diagnostics.Log.Info("Process Resize Wallpapers:", this);
-
             foreach (MediaItem uploadedItem in args.UploadedItems)
             {
-                if (uploadedItem.FilePath.Contains("Wallpapers"))
+                if (uploadedItem.MediaPath.StartsWith("/Wallpapers/"))
                 {
+                    Sitecore.Diagnostics.Log.Info("Process Resize Wallpapers: File: " + uploadedItem.DisplayName, this);
+
                     Image image = Image.FromStream(uploadedItem.GetMediaStream());
 
                     int maxHeight = GetMaxMeasurements(WallpaperManagerMaxHeight, "500");
                     int maxWidth = GetMaxMeasurements(WallpaperManagerMaxWidth, "1000");
 
-                    Image resizedImage = _imageResizer.ResizeImage(image, maxWidth, maxHeight);
+                    Image resizedImage = _imageRepository.ResizeImage(image, maxWidth, maxHeight);
 
                     UpdateMediaItem(uploadedItem, resizedImage);
                 }
@@ -51,15 +52,9 @@ namespace MikeRobbins.WallpaperManager.Pipelines.UiUpload
         {
             Media media = MediaManager.GetMedia(uploadedItem);
 
-            media.SetStream(CovertImageToStream(resizedImage, resizedImage.RawFormat), uploadedItem.Extension);
-        }
+            ImageFormat imageFormat = _imageRepository.GetImageFormat(uploadedItem);
 
-        public Stream CovertImageToStream(Image image, ImageFormat imageFormat)
-        {
-            var stream = new MemoryStream();
-            image.Save(stream, imageFormat);
-            stream.Position = 0;
-            return stream;
+            media.SetStream(_imageRepository.CovertImageToStream(resizedImage, imageFormat), uploadedItem.Extension);
         }
 
         public int GetMaxMeasurements(string key, string defaultValue)
