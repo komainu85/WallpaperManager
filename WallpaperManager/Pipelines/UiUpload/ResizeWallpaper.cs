@@ -12,6 +12,9 @@ using StructureMap;
 
 namespace MikeRobbins.WallpaperManager.Pipelines.UiUpload
 {
+    /// <summary>
+    /// Cant use this until Sitecore SPEAK uploader bug fixed. Currently doesn't use pipeline.
+    /// </summary>
     public class ResizeWallpaper : UploadProcessor
     {
         private const string WallpaperManagerMaxHeight = "WallpaperManager.MaxHeight";
@@ -38,10 +41,7 @@ namespace MikeRobbins.WallpaperManager.Pipelines.UiUpload
 
                     Image image = Image.FromStream(uploadedItem.GetMediaStream());
 
-                    int maxHeight = GetMaxMeasurements(WallpaperManagerMaxHeight, "500");
-                    int maxWidth = GetMaxMeasurements(WallpaperManagerMaxWidth, "1000");
-
-                    Image resizedImage = _imageRepository.ResizeImage(image, maxWidth, maxHeight);
+                    Image resizedImage = _imageRepository.ResizeImage(image);
 
                     UpdateMediaItem(uploadedItem, resizedImage);
                 }
@@ -52,19 +52,7 @@ namespace MikeRobbins.WallpaperManager.Pipelines.UiUpload
         {
             Media media = MediaManager.GetMedia(uploadedItem);
 
-            ImageFormat imageFormat = _imageRepository.GetImageFormat(uploadedItem);
-
-            media.SetStream(_imageRepository.CovertImageToStream(resizedImage, imageFormat), uploadedItem.Extension);
-        }
-
-        public int GetMaxMeasurements(string key, string defaultValue)
-        {
-            int measurement;
-            string maxValue = _settingsProvider.GetSetting(key, defaultValue);
-
-            int.TryParse(maxValue, out measurement);
-
-            return measurement;
+            media.SetStream(_imageRepository.CovertImageToStream(resizedImage, uploadedItem), uploadedItem.Extension);
         }
     }
 }

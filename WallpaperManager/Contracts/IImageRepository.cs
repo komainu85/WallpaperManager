@@ -7,8 +7,8 @@ namespace MikeRobbins.WallpaperManager.Contracts
 {
     public interface IImageRepository
     {
-        Image ResizeImage(Image image, int maxWidth, int maxHeight);
+        Image ResizeImage(Image image);
         ImageFormat GetImageFormat(MediaItem uploadedItem);
-        Stream CovertImageToStream(Image image, ImageFormat imageFormat);
+        Stream CovertImageToStream(Image image, MediaItem mediaItem);
     }
 }

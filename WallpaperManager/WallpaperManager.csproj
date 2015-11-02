@@ -54,6 +54,10 @@
       <HintPath>..\packages\Sitecore.Core.1.0\lib\Sitecore.Kernel.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Sitecore.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Mvc.1.0\lib\Sitecore.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Sitecore.Services.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Services.1.0\lib\Sitecore.Services.Client.dll</HintPath>
       <Private>True</Private>
@@ -68,6 +72,14 @@
     </Reference>
     <Reference Include="Sitecore.Services.Infrastructure.Sitecore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Services.1.0\lib\Sitecore.Services.Infrastructure.Sitecore.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sitecore.Speak.Client, Version=1.3.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Speak.1.0\lib\Sitecore.Speak.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sitecore.Speak.Mvc, Version=1.3.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Speak.1.0\lib\Sitecore.Speak.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="StructureMap">
