@@ -1,6 +1,8 @@
 ﻿using MikeRobbins.WallpaperManager.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -14,10 +16,12 @@ namespace MikeRobbins.WallpaperManager
         private const string _wallpaperDirectory = @"sitecore\shell\Themes\Backgrounds";
 
         private readonly IDataAccess _iDataAccess;
+        private readonly IImageRepository _imageRepository;
 
-        public FileAccess(IDataAccess iDataAccess)
+        public FileAccess(IDataAccess iDataAccess, IImageRepository imageRepository)
         {
             _iDataAccess = iDataAccess;
+            _imageRepository = imageRepository;
         }
 
         public FileInfo[] GetFiles()
@@ -34,11 +38,15 @@ namespace MikeRobbins.WallpaperManager
         {
             var mediaItem = _iDataAccess.GetMediaItem(wallpaper.itemId);
 
-            var mediaStream = mediaItem.GetMediaStream();
+            Image image = Image.FromStream(mediaItem.GetMediaStream());
+
+            Image resizedImage = _imageRepository.ResizeImage(image);
+
+            var mediaStream = _imageRepository.CovertImageToStream(resizedImage, mediaItem);
 
             try
             {
-                using (var fileStream = File.Create(_wallpaperDirectory + "\\" + mediaItem.DisplayName + "." + mediaItem.Extension))
+                using (var fileStream = File.Create(GetWallpaperDirectory() + "\\" + mediaItem.DisplayName + "." + mediaItem.Extension))
                 {
                     mediaStream.Seek(0, SeekOrigin.Begin);
                     mediaStream.CopyTo(fileStream);
