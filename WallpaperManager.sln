@@ -12,11 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3BB8F3
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serialization", "Serialization", "{EF6E8C4A-467F-4AE1-A51B-43EE9F48EBAA}"
-	ProjectSection(SolutionItems) = preProject
-		serialization\serialization.zip = serialization\serialization.zip
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallpaperManager.Tests", "WallpaperManager.Tests\WallpaperManager.Tests.csproj", "{AED0E323-B168-4883-85EF-BE6C01882FEA}"
 EndProject
 Global

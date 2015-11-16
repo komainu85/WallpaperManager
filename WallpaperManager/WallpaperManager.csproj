@@ -174,6 +174,17 @@
     <Content Include="web.config" />
     <Content Include="client\MikeRobbins\WallpaperManager\Tiles\WallpaperTile.cshtml" />
     <Content Include="App_Config\Include\xMikeRobbinsWallpaperManager.config" />
+    <Content Include="Serialization\core\sitecore\client\MikeRobbins\Applications\WallpaperManager.item" />
+    <Content Include="Serialization\core\sitecore\client\MikeRobbins\Applications\WallpaperManager\PageSettings.item" />
+    <Content Include="Serialization\core\sitecore\client\MikeRobbins\Applications\WallpaperManager\PageSettings\CancelDeleteRuleDefinition.item" />
+    <Content Include="Serialization\core\sitecore\client\MikeRobbins\Applications\WallpaperManager\PageSettings\InsertButtonRuleDefinition.item" />
+    <Content Include="Serialization\core\sitecore\client\MikeRobbins\Applications\WallpaperManager\PageSettings\ItemsRuleDefinition.item" />
+    <Content Include="Serialization\core\sitecore\client\MikeRobbins\Applications\WallpaperManager\PageSettings\ListControlRuleDefinition.item" />
+    <Content Include="Serialization\core\sitecore\client\MikeRobbins\Applications\WallpaperManager\PageSettings\Media.item" />
+    <Content Include="Serialization\core\sitecore\client\MikeRobbins\Applications\WallpaperManager\PageSettings\Messages.item" />
+    <Content Include="Serialization\core\sitecore\client\MikeRobbins\Applications\WallpaperManager\PageSettings\Messages\Wallpaper Deleted.item" />
+    <Content Include="Serialization\core\sitecore\client\MikeRobbins\Applications\WallpaperManager\PageSettings\Messages\Wallpapers Uploaded.item" />
+    <Content Include="Serialization\master\sitecore\media library\Wallpapers.item" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

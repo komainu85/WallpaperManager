@@ -11,12 +11,13 @@ namespace MikeRobbins.WallpaperManager.ImageManagement
         private const string WallpaperManagerMaxHeight = "WallpaperManager.MaxHeight";
         private const string WallpaperManagerMaxWidth = "WallpaperManager.MaxWidth";
 
-        private IImageResizer _imageResizer;
+        private readonly IImageResizer _imageResizer;
         private readonly ISettingsProvider _settingsProvider;
 
-        public ImageRepository(IImageResizer imageResizer)
+        public ImageRepository(IImageResizer imageResizer, ISettingsProvider settingsProvider)
         {
             _imageResizer = imageResizer;
+            _settingsProvider = settingsProvider;
         }
 
         public Image ResizeImage(Image image)

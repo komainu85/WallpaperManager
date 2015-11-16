@@ -14,13 +14,7 @@ namespace MikeRobbins.WallpaperManager.Controllers
     {
         private Container _container;
 
-        public static Container Container
-        {
-            get
-            {
-                return new Container(new Registry());
-            }
-        }
+        public static Container Container => new Container(new Registry());
 
         public WallpaperController(IRepository<Wallpaper> repository)
             : base(repository)
